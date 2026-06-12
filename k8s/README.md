@@ -7,6 +7,7 @@ Deploys the Fruits API with a persistent SQLite database.
 | `deployment.yaml`     | Runs the API container (non-root, with health probes).             |
 | `service.yaml`        | `ClusterIP` service exposing the app on port 80 → container 8000.  |
 | `pvc.yaml`            | `PersistentVolumeClaim` holding the SQLite file across restarts.   |
+| `ingress.yaml`        | `Ingress` exposing the service over HTTP at a hostname.            |
 | `kustomization.yaml`  | Bundles the above and sets the container image.                    |
 
 ## Deploy
@@ -40,5 +41,9 @@ Deploys the Fruits API with a persistent SQLite database.
   To scale horizontally, switch `DATABASE_URL` to a networked database (e.g. PostgreSQL)
   — the application reads it straight from the environment.
 - If your cluster has no default `StorageClass`, add `storageClassName` to `pvc.yaml`.
-- To expose the service externally, add an `Ingress` or change the Service `type` to
-  `LoadBalancer`.
+- **Ingress** is included (`ingress.yaml`) but is controller-specific. Set
+  `ingressClassName` and the `host` to match your cluster (the defaults assume the
+  [ingress-nginx](https://kubernetes.github.io/ingress-nginx/) controller and the host
+  `fruits-api.local`). For a quick local test, map the host to your ingress IP in
+  `/etc/hosts`, or skip Ingress entirely and use `kubectl port-forward` as shown above.
+  As an alternative, change the Service `type` to `LoadBalancer`.

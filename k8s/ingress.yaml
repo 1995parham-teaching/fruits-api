@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fruits-api
+  labels:
+    app: fruits-api
+  # Annotations are ingress-controller specific. Examples for the
+  # ingress-nginx controller are shown; adjust for your environment.
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  # Set this to your controller's IngressClass (e.g. "nginx", "traefik").
+  ingressClassName: nginx
+  rules:
+    # Replace with your own hostname.
+    - host: fruits-api.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fruits-api
+                port:
+                  number: 80
