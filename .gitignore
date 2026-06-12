@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Application data (local SQLite database)
+data/
+*.db
+*.sqlite3
+
+# Assignment brief
+*.pdf
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
