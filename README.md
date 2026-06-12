@@ -4,8 +4,7 @@ A simple, containerized **Fruits API** built with [FastAPI](https://fastapi.tian
 SQLAlchemy, and SQLite. It exposes three endpoints to list, fetch, and add fruits, with data
 persisted across requests.
 
-This repository was produced as a take-home assignment. See [`AI_USAGE.md`](./AI_USAGE.md)
-for a description of where and how AI tooling was used.
+This repository was produced as a take-home assignment.
 
 ---
 
